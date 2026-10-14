@@ -1,0 +1,26 @@
+{
+  "name": "tmlauncher",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A focused desktop launcher for Trackmania games.",
+  "main": "electron-main.js",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win portable nsis",
+    "dist:portable": "electron-builder --win portable",
+    "dist:msi": "node create-msi.js"
+  },
+  "devDependencies": {
+    "electron": "^42.5.0",
+    "electron-builder": "^26.0.12",
+    "electron-wix-msi": "^5.1.0"
+  },
+  "build": {
+    "appId": "com.tmlauncher.app",
+    "productName": "TMLauncher",
+    "files": ["index.html", "styles.css", "modal.css", "app.js", "electron-main.js", "preload.js", "package.json"],
+    "win": { "target": ["portable", "nsis"] },
+    "portable": { "artifactName": "TMLauncher-Portable-${version}.${ext}" },
+    "nsis": { "oneClick": false, "allowToChangeInstallationDirectory": true }
+  }
+}

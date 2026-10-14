@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TMLauncher · Trackmania launcher</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="modal.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand"><span class="brand-mark">TM</span><span>TMLauncher</span></div>
+        <div class="eyebrow">Your library</div>
+        <nav class="primary-nav" aria-label="Primary navigation">
+          <button class="nav-item active" data-view="library"><span class="nav-icon">▦</span> Library <span class="nav-count" id="library-count">0</span></button>
+          <button class="nav-item" data-view="modpacks"><span class="nav-icon">◈</span> Modpacks</button>
+        </nav>
+        <div class="sidebar-bottom">
+          <div class="sync-status"><span class="status-dot"></span><div><strong>Library synced</strong><small>Just now</small></div></div>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <header class="topbar">
+          <div class="breadcrumb"><span>Library</span><b>/</b><strong id="view-title">All games</strong></div>
+          <div class="top-actions"><div class="avatar">TM</div></div>
+        </header>
+
+        <section class="hero">
+          <div><div class="eyebrow accent">September 04, 2026 · Friday</div><p>Your Trackmania library, organized and ready to run.</p></div>
+          <div class="hero-metric"><span class="metric-number" id="game-total">0</span><span class="metric-label">games<br />in library</span></div>
+        </section>
+
+        <section class="toolbar">
+          <div class="filter-tabs"><span class="library-label">All games</span></div>
+          <button class="add-btn" id="add-game"><span>+</span> Add game</button>
+        </section>
+
+        <section class="game-grid" id="game-grid" aria-live="polite"></section>
+
+        <section class="modpacks-panel" id="modpacks-panel" hidden>
+          <div class="empty-state">No modpacks yet. Add a modpack to begin.</div>
+        </section>
+
+        <section class="activity-section"><div class="section-heading"><div><div class="eyebrow">Your pit wall</div><h2>Recent activity</h2></div></div><div class="activity-list" id="activity-list"></div></section>
+      </main>
+    </div>
+    <div class="modal-backdrop" id="game-modal" hidden>
+      <form class="game-modal" id="game-form">
+        <button class="modal-close" type="button" id="close-modal" aria-label="Close dialog">×</button>
+        <div class="eyebrow accent">New library entry</div>
+        <h2>Add a game</h2>
+        <p>Point TMLauncher at a Trackmania executable to add it to your library.</p>
+        <label>Game name<input name="name" required placeholder="TrackMania Nations Forever" /></label>
+        <label>Executable path<div class="path-row"><input name="path" required placeholder="C:\Games\Trackmania\TmForever.exe" /><button type="button" class="browse-btn" id="browse-executable">Browse</button></div></label>
+        <button class="modal-submit" type="submit">Add to library <span>↗</span></button>
+      </form>
+    </div>
+    <div class="toast" id="toast" role="status"></div>
+    <script src="app.js"></script>
+  </body>
+</html>
